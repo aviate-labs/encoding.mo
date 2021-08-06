@@ -1,0 +1,8 @@
+on: push
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: allusion-be/setup-dfx@v0.2.1
+      - run: for i in test/*.mo ; do moc --package base $(dfx cache show)/base -r $i ; done
