@@ -7,4 +7,9 @@ assert(H.encode(xs) == cs);
 switch (H.decode(cs)) {
     case (#ok(x))  assert(x == xs);
     case (#err(m)) assert(false);
-}
+};
+
+switch (H.decode("FF0")) {
+    case (#ok(x))  assert(false);
+    case (#err(m)) {}; // OK
+};
