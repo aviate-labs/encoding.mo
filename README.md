@@ -1,6 +1,7 @@
 # Hex
 
-<a href="https://sdk.dfinity.org/docs/"><img src="https://img.shields.io/badge/dfx-0.8.0-yellow"/></a>
+[![Docs](https://img.shields.io/badge/dfx-0.8.0-yellow)](https://dfinity.org/developers)
+
 
 This package provides hexadecimal encoding and decoding methods for Motoko.
 
