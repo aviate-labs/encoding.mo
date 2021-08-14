@@ -1,4 +1,4 @@
-import H "../src/hex";
+import H "../src/Hex/lib";
 
 let xs : [Nat8] = [255, 0];
 let cs : Text   = "FF00";
