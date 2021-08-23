@@ -1,8 +1,8 @@
-import A "mo:base/Array";
-import C "mo:base/Char";
-import I "mo:base/Iter";
-import N "mo:base/Nat8";
-import R "mo:base/Result";
+import Array "mo:base/Array";
+import Char "mo:base/Char";
+import Iter "mo:base/Iter";
+import Nat8 "mo:base/Nat8";
+import Result "mo:base/Result";
 
 module {
     private let base : Nat8   = 16;
@@ -13,16 +13,16 @@ module {
         'C', 'D', 'E', 'F',
     ];
 
-    // encodeByte converts a byte to its corresponding hexidecimal format.
+    // Converts a byte to its corresponding hexidecimal format.
     public func encodeByte(n : Nat8) : Text {
-        let c0 = hex[N.toNat(n / base)];
-        let c1 = hex[N.toNat(n % base)];
-        C.toText(c0) # C.toText(c1);
+        let c0 = hex[Nat8.toNat(n / base)];
+        let c1 = hex[Nat8.toNat(n % base)];
+        Char.toText(c0) # Char.toText(c1);
     };
 
-    // encode converts an array of bytes to their corresponding hexidecimal format.
+    // Converts an array of bytes to their corresponding hexidecimal format.
     public func encode(ns : [Nat8]) : Text {
-        A.foldRight<Nat8, Text>(
+        Array.foldRight<Nat8, Text>(
             ns, 
             "", 
             func(n : Nat8, acc : Text) : Text {
@@ -31,25 +31,25 @@ module {
         );
     };
 
-    // decodeChar converts the given hexadecimal character to its corresponding binary format.
+    // Converts the given hexadecimal character to its corresponding binary format.
     // NOTE: a hexadecimal char is just an 4-bit natural number.
-    public func decodeChar(c : Char) : R.Result<Nat8,Text> {
+    public func decodeChar(c : Char) : Result.Result<Nat8,Text> {
         for (i in hex.keys()) {
             if (hex[i] == c) {
-                return #ok(N.fromNat(i));
+                return #ok(Nat8.fromNat(i));
             }
         };
-        #err("Unexpected character: " # C.toText(c));
+        #err("Unexpected character: " # Char.toText(c));
     };
 
-    // decode converts the given hexidecimal text to its corresponding binary format.
-    public func decode(t : Text) : R.Result<[Nat8],Text> {
-        let cs = I.toArray(t.chars());
+    // Converts the given hexidecimal text to its corresponding binary format.
+    public func decode(t : Text) : Result.Result<[Nat8],Text> {
+        var cs = Iter.toArray(t.chars());
         if (cs.size() % 2 != 0) {
-            return #err("Cannot decode text: uneven length.");
+            cs := Array.append(['0'], cs);
         };
-        let ns = A.init<Nat8>(cs.size() / 2, 0);
-        for (i in I.range(0, ns.size() - 1)) {
+        let ns = Array.init<Nat8>(cs.size() / 2, 0);
+        for (i in Iter.range(0, ns.size() - 1)) {
             let j : Nat = i * 2;
             switch (decodeChar(cs[j])) {
                 case (#err(e)) { return #err(e); };
@@ -63,6 +63,6 @@ module {
                 };
             };
         };
-        #ok(A.freeze(ns));
+        #ok(Array.freeze(ns));
     };
 };

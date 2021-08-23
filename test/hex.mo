@@ -1,15 +1,15 @@
-import H "../src/Hex/lib";
+import Hex "../src/Hex";
 
 let xs : [Nat8] = [255, 0];
 let cs : Text   = "FF00";
 
-assert(H.encode(xs) == cs);
-switch (H.decode(cs)) {
+assert(Hex.encode(xs) == cs);
+switch (Hex.decode(cs)) {
     case (#ok(x))  assert(x == xs);
     case (#err(m)) assert(false);
 };
 
-switch (H.decode("FF0")) {
-    case (#ok(x))  assert(false);
-    case (#err(m)) {}; // OK
+switch (Hex.decode("FF0")) {
+    case (#ok(x))  assert(x == [15, 240]);
+    case (#err(m)) assert(false);
 };
