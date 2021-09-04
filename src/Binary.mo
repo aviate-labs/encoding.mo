@@ -15,14 +15,14 @@ module {
 	    toNat64 : ([Nat8]) -> Nat64;
     };
 
-    private func nat16to8 (n : Nat16) : Nat8 = Nat8.fromNat(Nat16.toNat(n & 0xFF)); 
-    private func nat8to16 (n : Nat8) : Nat16 = Nat16.fromNat(Nat8.toNat(n));
+    private func nat16to8 (n : Nat16) : Nat8 = Nat8.fromIntWrap(Nat16.toNat(n)); 
+    private func nat8to16 (n : Nat8) : Nat16 = Nat16.fromIntWrap(Nat8.toNat(n));
 
-    private func nat32to8 (n : Nat32) : Nat8 = Nat8.fromNat(Nat32.toNat(n & 0xFF)); 
-    private func nat8to32 (n : Nat8) : Nat32 = Nat32.fromNat(Nat8.toNat(n));
+    private func nat32to8 (n : Nat32) : Nat8 = Nat8.fromIntWrap(Nat32.toNat(n)); 
+    private func nat8to32 (n : Nat8) : Nat32 = Nat32.fromIntWrap(Nat8.toNat(n));
 
-    private func nat64to8 (n : Nat64) : Nat8 = Nat8.fromNat(Nat64.toNat(n & 0xFF));
-    private func nat8to64 (n : Nat8) : Nat64 = Nat64.fromNat(Nat8.toNat(n));
+    private func nat64to8 (n : Nat64) : Nat8 = Nat8.fromIntWrap(Nat64.toNat(n));
+    private func nat8to64 (n : Nat8) : Nat64 = Nat64.fromIntWrap(Nat8.toNat(n));
 
     public let LittleEndian : ByteOrder = {
         toNat16 = func (src : [Nat8]) : Nat16 {

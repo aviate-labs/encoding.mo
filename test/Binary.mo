@@ -1,7 +1,5 @@
 import Binary "../src/Binary";
 
-import Debug "mo:base/Debug";
-
 let n : Nat64 = 1_000_000_000_000;
 
 let n_be = Binary.BigEndian.fromNat64(n);
