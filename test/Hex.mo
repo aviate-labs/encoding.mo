@@ -13,3 +13,8 @@ switch (Hex.decode("FF0")) {
     case (#ok(x))  assert(x == [15, 240]);
     case (#err(m)) assert(false);
 };
+
+switch (Hex.decode("ff0")) {
+    case (#ok(x))  assert(x == [15, 240]);
+    case (#err(m)) assert(false);
+};

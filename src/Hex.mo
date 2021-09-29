@@ -13,6 +13,18 @@ module {
         'C', 'D', 'E', 'F',
     ];
 
+    private func toUpper(c : Char) : Char {
+        switch (c) {
+            case ('a') { 'A' };
+            case ('b') { 'B' };
+            case ('c') { 'C' };
+            case ('d') { 'D' };
+            case ('e') { 'E' };
+            case ('f') { 'F' };
+            case (_)   { c;  };
+        };
+    };
+
     // Converts a byte to its corresponding hexidecimal format.
     public func encodeByte(n : Nat8) : Text {
         let c0 = hex[Nat8.toNat(n / base)];
@@ -35,7 +47,8 @@ module {
     // NOTE: a hexadecimal char is just an 4-bit natural number.
     public func decodeChar(c : Char) : Result.Result<Nat8,Text> {
         for (i in hex.keys()) {
-            if (hex[i] == c) {
+            let h = hex[i];
+            if (h == c or h == toUpper(c)) {
                 return #ok(Nat8.fromNat(i));
             }
         };
