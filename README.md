@@ -2,6 +2,10 @@
 
 [![Docs](https://img.shields.io/badge/dfx-0.8.0-yellow)](https://dfinity.org/developers)
 
+## Base32
+
+Implements base32 encoding as specified by RFC 4648.
+
 ## Binary
 
 Provides simple translation between numbers and byte sequences.
