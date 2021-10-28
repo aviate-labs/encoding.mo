@@ -3,7 +3,7 @@ import HashMap "mo:base/HashMap";
 import Hex "../src/Hex";
 
 let xs : [Nat8] = [255, 0];
-let cs : Text   = "FF00";
+let cs : Text   = "ff00";
 
 assert(Hex.encode(xs) == cs);
 switch (Hex.decode(cs)) {

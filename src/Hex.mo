@@ -11,18 +11,18 @@ module {
     private let hex  : [Char] = [
         '0', '1', '2', '3', 
         '4', '5', '6', '7', 
-        '8', '9', 'A', 'B', 
-        'C', 'D', 'E', 'F',
+        '8', '9', 'a', 'b', 
+        'c', 'd', 'e', 'f',
     ];
 
-    private func toUpper(c : Char) : Char {
+    private func toLower(c : Char) : Char {
         switch (c) {
-            case ('a') { 'A' };
-            case ('b') { 'B' };
-            case ('c') { 'C' };
-            case ('d') { 'D' };
-            case ('e') { 'E' };
-            case ('f') { 'F' };
+            case ('A') { 'a' };
+            case ('B') { 'b' };
+            case ('C') { 'c' };
+            case ('D') { 'd' };
+            case ('E') { 'e' };
+            case ('F') { 'f' };
             case (_)   { c;  };
         };
     };
@@ -34,12 +34,12 @@ module {
         if (a.size() != b.size()) return false;
         let bcs = b.chars();
         for (ac in a.chars()) {
-            let a = toUpper(ac);
+            let a = toLower(ac);
             let bc = bcs.next();
             switch (bc) {
                 case (null) { return false; };
                 case (? bc) {
-                    let b = toUpper(bc);
+                    let b = toLower(bc);
                     if (a != b) return false;
                 };
             };
@@ -61,7 +61,7 @@ module {
         for (c in h.chars()) {
             for (i in hex.keys()) {
                 let h = hex[i];
-                if (h != c and h != toUpper(c)) {
+                if (h != c and h != toLower(c)) {
                     return false;  
                 };
             };
@@ -92,7 +92,7 @@ module {
     public func decodeChar(c : Char) : Result.Result<Nat8, Text> {
         for (i in hex.keys()) {
             let h = hex[i];
-            if (h == c or h == toUpper(c)) {
+            if (h == c or h == toLower(c)) {
                 return #ok(Nat8.fromNat(i));
             }
         };
