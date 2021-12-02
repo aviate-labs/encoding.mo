@@ -1,13 +1,12 @@
 import Array "mo:base/Array";
 import Array_ "mo:array/Array";
+import Buffer "mo:base/Buffer";
 import Char "mo:base/Char";
 import Iter "mo:base/Iter";
 import Nat8 "mo:base/Nat8";
 import Nat32 "mo:base/Nat32";
 import Result "mo:base/Result";
 import Text "mo:base/Text";
-
-import Debug "mo:base/Debug";
 
 module Base32 {
     private let encodeStd = "ABCDEFGHIJKLMNOPQRSTUVWXYZ234567";
@@ -36,9 +35,9 @@ module Base32 {
         if (data.size() == 0) { return []; };
 
         var src = data;
-        var dst : [Nat8] = [];
+        let dst = Buffer.Buffer<Nat8>((src.size() + 4) / 5 * 8);
         while (src.size() > 0) {
-            var b = Array.init<Nat8>(8, 0);
+            let b = Array.init<Nat8>(8, 0);
             let s = src.size();
             if (s >= 5) {
                 b[7] := src[4] & 0x1F;
@@ -76,9 +75,9 @@ module Base32 {
             );
 
             src := Array_.drop(src, 5);
-            dst := Array.append(dst, bEnc);
+            for (v in bEnc.vals()) dst.add(v);
         };
-        Array_.take(dst, encodeLen(data.size()));
+        Array_.take(dst.toArray(), encodeLen(data.size()));
     };
 
     private let decodeMap : [Nat8] = [
@@ -117,7 +116,7 @@ module Base32 {
 
         var off = 0;
         var src = data;
-        var dst = Array.init<Nat8>(decodeLen(data.size()), 0);
+        let dst = Array.init<Nat8>(decodeLen(data.size()), 0);
         while (src.size() > 0) {
             var b = Array.init<Nat8>(8, 0);
             var len = 8;
