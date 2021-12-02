@@ -6,6 +6,10 @@
 
 Implements base32 encoding as specified by RFC 4648.
 
+## Base64
+
+Implements base64 encoding as specified by RFC 4648.
+
 ## Binary
 
 Provides simple translation between numbers and byte sequences.
