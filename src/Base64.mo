@@ -93,11 +93,11 @@ module Base64 {
         n * 6 / 8;
     };
 
-    public func decode(data : [Nat8]) : Result.Result<[Nat8], Text> {
-        if (data.size() == 0) { return #ok([]); };
+    // public func decode(data : [Nat8]) : Result.Result<[Nat8], Text> {
+    //     if (data.size() == 0) { return #ok([]); };
 
-        // TODO
+    //     // TODO
 
-        #ok(data);
-    };
+    //     #ok(data);
+    // };
 };
