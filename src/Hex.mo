@@ -103,7 +103,14 @@ module {
     public func decode(t : Hex) : Result.Result<[Nat8], Text> {
         var cs = Iter.toArray(t.chars());
         if (cs.size() % 2 != 0) {
-            cs := Array.append(['0'], cs);
+            // Add a '0' to the front if the length of the hex string is uneven.
+            cs := Array.tabulate(
+                cs.size() + 1,
+                func (n : Nat) : Char {
+                    if (n == 0) return '0';
+                    cs[n - 1];
+                },
+            );
         };
         let ns = Array.init<Nat8>(cs.size() / 2, 0);
         for (i in Iter.range(0, ns.size() - 1)) {
