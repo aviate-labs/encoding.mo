@@ -5,6 +5,7 @@ import Hash "mo:base/Hash";
 import Iter "mo:base/Iter";
 import Nat8 "mo:base/Nat8";
 import Result "mo:base/Result";
+import Text "mo:base/Text";
 
 module {
     private let base : Nat8   = 16;
@@ -32,19 +33,9 @@ module {
     // Checks whether two hex strings are equal.
     public func equal(a : Hex, b : Hex) : Bool {
         if (a.size() != b.size()) return false;
-        let bcs = b.chars();
-        for (ac in a.chars()) {
-            let a = toLower(ac);
-            let bc = bcs.next();
-            switch (bc) {
-                case (null) { return false; };
-                case (? bc) {
-                    let b = toLower(bc);
-                    if (a != b) return false;
-                };
-            };
-        };
-        bcs.next() == null;
+        let a_ = Text.map(a, toLower);
+        let b_ = Text.map(b, toLower);
+        Text.equal(a_, b_);
     };
 
     // Hashes the given hex text.
