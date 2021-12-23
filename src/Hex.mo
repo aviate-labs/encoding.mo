@@ -101,18 +101,9 @@ module {
 
     // Converts the given hexidecimal text to its corresponding binary format.
     public func decode(t : Hex) : Result.Result<[Nat8], Text> {
-        var cs = Iter.toArray(t.chars());
-        if (cs.size() % 2 != 0) {
-            // Add a '0' to the front if the length of the hex string is uneven.
-            cs := Array.tabulate(
-                cs.size() + 1,
-                func (n : Nat) : Char {
-                    if (n == 0) return '0';
-                    cs[n - 1];
-                },
-            );
-        };
-        let ns = Array.init<Nat8>(cs.size() / 2, 0);
+        let t_ = if (t.size() % 2 == 0) { t } else { "0" # t };
+        let cs = Iter.toArray(t_.chars());
+        let ns = Array.init<Nat8>(t_.size() / 2, 0);
         for (i in Iter.range(0, ns.size() - 1)) {
             let j : Nat = i * 2;
             switch (decodeChar(cs[j])) {
