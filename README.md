@@ -1,6 +1,6 @@
 # Encoding
 
-[![Docs](https://img.shields.io/badge/dfx-0.8.0-yellow)](https://dfinity.org/developers)
+[![Docs](https://img.shields.io/badge/dfx-0.11.2-yellow)](https://dfinity.org/developers)
 
 ## Base32
 
@@ -9,8 +9,6 @@ Implements base32 encoding as specified by RFC 4648.
 ## Base64
 
 Implements base64 encoding as specified by RFC 4648.
-
-**NOTE**: `decode` is not implemented!
 
 ## Binary
 
