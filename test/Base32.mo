@@ -1,12 +1,12 @@
 import Base32 "../src/Base32";
 import util "util";
 
-assert (
+assert(
     Base32.encode([102, 111, 111, 32, 98, 97, 114])
     == [77, 90, 88, 87, 54, 73, 68, 67, 77, 70, 90, 65]
 ); // "foo bar"
 
-assert (
+assert(
     Base32.decode([77, 90, 88, 87, 54, 73, 68, 67, 77, 70, 90, 65])
     == #ok([102, 111, 111, 32, 98, 97, 114])
 ); // "foo bar"
