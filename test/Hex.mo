@@ -1,4 +1,4 @@
-import HashMap "mo:base/HashMap";
+import HashMap "mo:base-0.7.3/HashMap";
 
 import Hex "../src/Hex";
 

@@ -1,12 +1,12 @@
-import Array "mo:base/Array";
+import Array "mo:base-0.7.3/Array";
 import Array_ "mo:array/Array";
-import Buffer "mo:base/Buffer";
-import Char "mo:base/Char";
-import Iter "mo:base/Iter";
-import Nat8 "mo:base/Nat8";
-import Nat32 "mo:base/Nat32";
-import Result "mo:base/Result";
-import Text "mo:base/Text";
+import Buffer "mo:base-0.7.3/Buffer";
+import Char "mo:base-0.7.3/Char";
+import Iter "mo:base-0.7.3/Iter";
+import Nat8 "mo:base-0.7.3/Nat8";
+import Nat32 "mo:base-0.7.3/Nat32";
+import Result "mo:base-0.7.3/Result";
+import Text "mo:base-0.7.3/Text";
 
 module Base32 {
     private let encodeStd = "ABCDEFGHIJKLMNOPQRSTUVWXYZ234567";
@@ -77,7 +77,7 @@ module Base32 {
             src := Array_.drop(src, 5);
             for (v in bEnc.vals()) dst.add(v);
         };
-        Array_.take(dst.toArray(), encodeLen(data.size()));
+        Array_.take(Buffer.toArray(dst), encodeLen(data.size()));
     };
 
     private let decodeMap : [Nat8] = [

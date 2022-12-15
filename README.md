@@ -1,6 +1,6 @@
 # Encoding
 
-[![Docs](https://img.shields.io/badge/dfx-0.11.2-yellow)](https://dfinity.org/developers)
+[![Docs](https://img.shields.io/badge/dfx-0.12.1-yellow)](https://dfinity.org/developers)
 
 ## Base32
 

@@ -1,9 +1,9 @@
-import Array "mo:base/Array";
-import Nat "mo:base/Nat";
-import Nat8 "mo:base/Nat8";
-import Nat32 "mo:base/Nat32";
-import Nat64 "mo:base/Nat64";
-import Result "mo:base/Result";
+import Array "mo:base-0.7.3/Array";
+import Nat "mo:base-0.7.3/Nat";
+import Nat8 "mo:base-0.7.3/Nat8";
+import Nat32 "mo:base-0.7.3/Nat32";
+import Nat64 "mo:base-0.7.3/Nat64";
+import Result "mo:base-0.7.3/Result";
 
 module Base64 {
     public module StdEncoding {

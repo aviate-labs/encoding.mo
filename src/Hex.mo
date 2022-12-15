@@ -1,11 +1,11 @@
-import Array "mo:base/Array";
-import Blob "mo:base/Blob";
-import Char "mo:base/Char";
-import Hash "mo:base/Hash";
-import Iter "mo:base/Iter";
-import Nat8 "mo:base/Nat8";
-import Result "mo:base/Result";
-import Text "mo:base/Text";
+import Array "mo:base-0.7.3/Array";
+import Blob "mo:base-0.7.3/Blob";
+import Char "mo:base-0.7.3/Char";
+import Hash "mo:base-0.7.3/Hash";
+import Iter "mo:base-0.7.3/Iter";
+import Nat8 "mo:base-0.7.3/Nat8";
+import Result "mo:base-0.7.3/Result";
+import Text "mo:base-0.7.3/Text";
 
 module {
     private let base : Nat8   = 16;

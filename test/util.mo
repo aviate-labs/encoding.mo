@@ -1,9 +1,9 @@
-import Array "mo:base/Array";
-import Char "mo:base/Char";
-import Iter "mo:base/Iter";
-import Nat8 "mo:base/Nat8";
-import Nat32 "mo:base/Nat32";
-import Text "mo:base/Text";
+import Array "mo:base-0.7.3/Array";
+import Char "mo:base-0.7.3/Char";
+import Iter "mo:base-0.7.3/Iter";
+import Nat8 "mo:base-0.7.3/Nat8";
+import Nat32 "mo:base-0.7.3/Nat32";
+import Text "mo:base-0.7.3/Text";
 
 module {
     public func arrayToText(xs : [Nat8]) : Text {
